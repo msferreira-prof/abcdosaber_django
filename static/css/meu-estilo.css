@@ -1,0 +1,96 @@
+.my-font-family {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.my-label-color-purple {
+    color: #470864;
+}
+
+/* menu */
+.my-color-purple {
+    color: #470864 !important;
+}
+
+.my-bg-color-purple {
+    background-color: #470864;
+}
+
+.my-bg-color-principal {
+    background-color: rgb(231, 178, 153);
+}
+
+.navbar {
+    font-size: 24px;
+}
+
+.navitem {
+    color: #470864;
+}
+
+/* outros */
+.my-h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #470864;
+    border-bottom: 1px solid #470864;
+}
+
+.my-badge-vertical-align-super {
+    vertical-align: super;
+}
+
+.meu-h5-font-size {
+    font-size: 1.2em;
+}
+
+/* tabelas */
+.my-table-hover tbody > tr:hover {
+    background-color: #a1cc9c4f;
+}
+
+.my-table-image td {
+    vertical-align: middle;
+}
+
+.my-table-td-first-child td:first-child {
+    text-align: left;
+}
+
+.my-table-th th {
+    font-size: 24px;
+    color: #008080;
+    background-color: rgb(249, 255, 206);
+}
+
+.my-border-bottom {
+    border-bottom: 1px solid rgb(231, 10, 76);
+}
+
+.my-table-border-bottom tr {
+    border-bottom: 1px solid rgb(214, 193,226);
+}
+
+/* define uma cor de borda e uma sombra para o card ativo pelo mouse */
+.card:hover{
+    border-color: #470864;
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+/* define um conjunto de regras para subclasses */
+.fonte-bold {
+    font-weight: bold;
+}
+
+/* define cor para o icone utilizado no jumbotron */
+.material-icons.stateblue { 
+    color: #6A5ACD;
+    vertical-align: bottom;
+}
+
+.copyright {
+    font-size: .8rem;
+}
+
+.tooltip_sublinhado {
+    text-decoration: underline;
+}
