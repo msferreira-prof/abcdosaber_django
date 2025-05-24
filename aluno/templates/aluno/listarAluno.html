@@ -1,0 +1,101 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Lista de Alunos</h2>
+            </div>
+        </div>
+
+        <!-- tabela responsiva -->
+        <div class="table-responsive">
+
+            <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+            <table class="table
+                        table-borderless
+                        text-center
+                        my-table-hover
+                        my-table-image
+                        my-table-td-first-child
+                        my-table-border-bottom
+                        my-table-th
+                        w-100">
+
+                <!-- cabecalho -->
+                <thead>
+                    <!-- linhas -->
+                    <tr>
+                        <!-- colunas cabecalho -->
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Data Matrícula</th>
+                        <th>Data Saída</th>
+                        <th>Aluno Monitor</th>
+                    </tr>
+                </thead>
+
+                <!-- linhas -->
+                <tr>
+                    <td> 1 </td>
+                    <td> Marcos Ferreira </td>
+                    <td> 01/10/2021 </td>
+                    <td> -- </td>
+                    <td> SIM </td>
+                </tr>
+                <tr>
+                    <td> 2 </td>
+                    <td> José Mauro </td>
+                    <td> 01/09/2020 </td>
+                    <td> -- </td>
+                    <td> SIM </td>
+                </tr>
+                <tr>
+                    <td> 3 </td>
+                    <td> Hian Ferreira </td>
+                    <td> 10/08/2021 </td>
+                    <td> -- </td>
+                    <td> SIM </td>
+                </tr>
+                <tr>
+                    <td> 4 </td>
+                    <td> Pedro Miranda </td>
+                    <td> 12/07/2022 </td>
+                    <td> -- </td>
+                    <td> NÃO </td>
+                </tr>
+                <tr>
+                    <td> 5 </td>
+                    <td> Stephanie Negri </td>
+                    <td> 21/11/2020 </td>
+                    <td> -- </td>
+                    <td> NÃO </td>
+                </tr>
+                <tr>
+                    <td> 6 </td>
+                    <td> Carlos Alexandre </td>
+                    <td> 10/03/2022 </td>
+                    <td> -- </td>
+                    <td> NÃO </td>
+                </tr>
+                <tr>
+                    <td> 7 </td>
+                    <td> Felipe Gomes </td>
+                    <td> 04/12/2021 </td>
+                    <td> -- </td>
+                    <td> NÃO </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </main>
+{% endblock %}
+
+
+
