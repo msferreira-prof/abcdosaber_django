@@ -4,6 +4,16 @@
     <title>Django - Exercícios</title>
 {% endblock %}
 
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'aluno:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'aluno:listar' %}" class="nav-link">Listar</a>
+        </div>
+    </div>
+{% endblock %}
+
 {% block corpo %}
     <main class="container m-2 mx-auto my-font-family">
 

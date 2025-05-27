@@ -1,0 +1,41 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'aluno:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'aluno:listar' %}" class="nav-link">Listar</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Cadastro de Alunos</h2>
+            </div>
+        </div>
+
+        <form action="#" method="POST" name="frmCadastrarAluno" id="idFrmCadastrarAluno">
+            <div class="form-group">
+                <label for='idNome'>Nome</label>
+                <input class="form-control" type='text' id='idNome' name='nome' placeholder='Informe o nome do aluno' required>
+            </div>
+            <div class="form-group">
+                <label for='idDataInicial'>Data de Início na Escola</label>
+                <input class="form-control" type='date' id='idDataInicial' name='dataInicial' required>
+            </div>
+            <div class='form-group text-center'>
+                <input type='reset'  value='Limpar' class='btn btn-primary btn-md'>
+                <input type='submit' value='Cadastrar' class='btn btn-primary btn-md' id="btnCadastrarTiposAtividade">
+            </div>
+        </form>
+    </main>
+{% endblock %}

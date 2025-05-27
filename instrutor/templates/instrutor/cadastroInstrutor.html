@@ -1,0 +1,76 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'instrutor:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'instrutor:listar' %}" class="nav-link">Listar</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 w-75 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Cadastro de Instrutores</h2>
+            </div>
+        </div>
+
+        <!-- formulario HTML -->
+        <form name="frmCadastrarInstrutor" action="#" method="post" class="my-label-color-purple">
+
+            <div class="form-group">
+                <label for="idNomeInstrutor" class="col-form-label">Nome do Instrutor</label>
+                <input class="form-control" type="text" id="idNomeInstrutor" name="nome"
+                    placeholder="Informe o nome do instrutor" maxlength="70" required>
+            </div>
+
+            <div class="form-group">
+                <label for='idRg'>RG</label>
+                <input class="form-control" type='text' id='idRg' name='rg' placeholder="Informe o RG" maxlength="45"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for='idDataNascimento'>Data de Nascimento</label>
+                <input class="form-control" type='date' id='idDataNascimento' name='dataNascimento' required>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for='idDdd'>DDD</label>
+                    <input class="form-control" type='ddd' id='idDataNascimento' name='ddd' maxlength="3" required>
+                </div>
+                <div class="col-sm-6">
+                    <label for='idTelefone'>Telefone</label>
+                    <input class="form-control" type='text' id='idTelefone' name='telefone' maxlength="9" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="idTitulo">Título do Professor</label>
+                <select class="form-control" id="idTitulo" name="codigoTitulo">
+                    <option value="0">Selecione...</option>
+                    <option value="1">Professor Doutor</option>
+                    <option value="2">Professor Sabe-Tudo</option>
+                    <option value="3">Professor Estagiário</option>
+
+                </select>
+            </div>
+
+            <div class="form-group my-4 text-center">
+                <input type="reset" value="Limpar" class="btn btn-primary btn-md">
+                <input type="submit" value="Cadastrar" class="btn btn-primary btn-md">
+            </div>
+
+        </form>
+
+    </main>
+{% endblock %}
