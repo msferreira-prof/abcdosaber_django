@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
         <div class="navbar-nav">
             <a href="./escola.html" class="nav-link">Início</a>
-            <a href="./tipoatividade/cadastroTiposAtividade.html" class="nav-link">Tipos de Atividade</a>
-            <a href="./titulo/cadastroTitulos.html" class="nav-link">Títulos</a>
+            <a href="{% url 'tiposdeatividade:cadastrar'%}" class="nav-link">Tipos de Atividade</a>
+            <a href="{% url 'titulo:cadastrar' %}" class="nav-link">Títulos</a>
             <a href="{% url 'aluno:cadastrar' %}" class="nav-link">Alunos</a>
             <a href="{% url 'instrutor:cadastrar' %}" class="nav-link">Instrutor</a>
             <a href="./turma/cadastroTurma.html" class="nav-link">Turmas</a>

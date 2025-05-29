@@ -1,0 +1,37 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'titulo:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'titulo:listar' %}" class="nav-link">Listar</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 w-75 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Cadastro de Títulos</h2>
+            </div>
+        </div>
+
+        <form action="#" method="POST" name="frmCadastrarTitulo" id="idFrmCadastrarTiposAtividade">
+            <div class="form-group">
+                <label for='idDescricao'>Descrição</label>
+                <input class="form-control" type='text' id='idDescricao' name='descricao' placeholder='Informe a descrição' required>
+            </div>
+            <div class='form-group text-center'>
+                <input type='reset'  value='Limpar' class='btn btn-primary btn-md'>
+                <input type='submit' value='Cadastrar' class='btn btn-primary btn-md' id="btnCadastrarTiposAtividade">
+            </div>
+        </form>
+    </main>
+{% endblock %}    
