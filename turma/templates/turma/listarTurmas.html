@@ -1,0 +1,99 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'turma:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>
+            <a href="{% url 'turma:registrar_ausencia' %}" class="nav-link">Registrar Ausência</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Lista de Turmas</h2>
+            </div>
+        </div>
+
+        <!-- tabela responsiva -->
+        <div class="table-responsive">
+
+            <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+            <table class="table
+                        table-borderless
+                        text-center
+                        my-table-hover
+                        my-table-image
+                        my-table-td-first-child
+                        my-table-border-bottom
+                        my-table-th
+                        w-100">
+
+                <!-- cabecalho -->
+                <thead>
+                    <!-- linhas -->
+                    <tr>
+                        <!-- colunas cabecalho -->
+                        <th>Número</th>
+                        <th>Horário da Aula</th>
+                        <th>Duração da Aula</th>
+                        <th>Data Inicial</th>
+                        <th>Data Final</th>
+                        <th>Atividade</th>
+                        <th>Instrutor</th>
+                        <th>Titularidade</th>
+                        <th>Aluno Monitor</th>
+                    </tr>
+                </thead>
+
+                <!-- linhas -->
+                <tbody>
+                    <tr>
+                        <td> 1 </td>
+                        <td> 10:00:00 </td>
+                        <td> 2 </td>
+                        <td> 01/03/2022 </td>
+                        <td> -- </td>
+                        <td> Programador Web </td>
+                        <td> Jefferson Gonçalves </td>
+                        <td> Professor Doutor </td>
+                        <td> Marcos Ferreira </td>
+                    </tr>
+                    <tr>
+                        <td> 2 </td>
+                        <td> 13:00:00 </td>
+                        <td> 4 </td>
+                        <td> 01/03/2022 </td>
+                        <td> -- </td>
+                        <td> Programador Web </td>
+                        <td> Jefferson Gonçalves </td>
+                        <td> Professor Doutor </td>
+                        <td> José Mauro </td>
+                    </tr>
+                    <tr>
+                        <td> 3 </td>
+                        <td> 18:00:00 </td>
+                        <td> 4 </td>
+                        <td> 01/03/2022 </td>
+                        <td> -- </td>
+                        <td> Programador Web </td>
+                        <td> Jefferson Gonçalves </td>
+                        <td> Professor Doutor </td>
+                        <td> Hian Ferreira </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+{% endblock %}

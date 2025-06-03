@@ -1,0 +1,128 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    <title>Django - Exercícios</title>
+{% endblock %}
+
+{% block menu %}
+    <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">Início</a>
+            <a href="{% url 'turma:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'turma:listar' %}" class="nav-link">Listar</a>
+            <a href="{% url 'turma:registrar_ausencia' %}" class="nav-link">Registrar Ausência</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block corpo %}
+    <main class="container m-2 w-75 mx-auto my-font-family">
+
+        <div class="row">
+            <div class="col text-center m-0">
+                <h2 class="mt-2 mb-5 my-h2">Registro de Ausências</h2>
+            </div>
+        </div>
+
+        <!-- formulario para escolher a turma -->
+        <form name="frmDefinirTurma" id="idFrmDefinirTurma" action="#" method="post" class="my-label-color-purple">
+
+            <!-- montagem do combo com as turmas cadastradas que tenha aluno -->
+            <div class="form-group">
+                <label for="idTurma">Turma</label>
+                <select class="form-control" id="idTurma" name="numeroTurma">
+                    <option value="0">Selecione...</option>
+                    <option value="1">Turma 0001 - 10:00:00</option>
+                    <option value="2">Turma 0002 - 13:00:00</option>
+                    <option value="3">Turma 0003 - 18:00:00</option>
+                </select>
+            </div>
+
+            <div class="form-group my-4 text-center">
+                <input type="button" value="Limpar" class="btn btn-primary btn-md" id="idLimparTurmas">
+                <input type="submit" value="Consultar" class="btn btn-primary btn-md">
+            </div>
+
+        </form>
+
+        <!-- formulario HTML para registrar ausencia de alunos de uma turma -->
+        <form name="frmRegistrarAusencia" action="#" method="post" class="my-label-color-purple">
+
+            <!-- utiliza um input "hidden" para armazerar a turma escolhida inicialmente -->
+            <input type="hidden" name="numeroTurmaSelecionada" value="">
+
+            <!-- montagem do combo com os tipos de atividade -->
+            <div class="form-group">
+                <label for="idAlunoTurma">Aluno da Turma</label>
+                <select class="form-control" id="idAlunoTurma" name="matriculaAluno">
+                    <option value="0">Selecione...</option>
+                    <option value="1">Marcos Ferreira</option>
+                    <option value="2">José Mauro</option>
+                    <option value="3">Hian Ferreira</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="idDataAusencia" class="col-form-label">Data da Ausência</label>
+                <input class="form-control" type="date" id="idDataAusencia" name="dataAusencia" required>
+            </div>
+
+            <div class="form-group my-4 text-center">
+                <input type="reset" value="Limpar" class="btn btn-primary btn-md">
+                <input type="submit" value="Registrar" class="btn btn-primary btn-md">
+            </div>
+
+        </form>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <!-- acoes e validacoes sobre os formularios -->
+        <script type="text/javascript">
+        let vFrmDefinirTurma = document.querySelector('form[name="frmDefinirTurma"]');
+        vFrmDefinirTurma.onsubmit = validarTurmaSelecionada;
+
+        let btnIdLimparTurmas = document.getElementById("idLimparTurmas");
+        btnIdLimparTurmas.onclick = limparFrmDefinirTurma;
+
+        // verifica se o elemento do tipo formulario para a selecao de aluno esta no documento HTML
+        // neste caso, permitir remove-lo quando o botao "Limpar" do formulario da turma for clicado
+        if (document.querySelector('form[name="frmRegistrarAusencia"]')) {
+            let vFrmRegistrarAusencia = document.querySelector('form[name="frmRegistrarAusencia"]');
+            vFrmRegistrarAusencia.onsubmit = validarAlunoSelecionado;
+        }
+
+        // No formulario de selecao da turma, nao é permitido executar o submit para a opcao "Selecione" 
+        function validarTurmaSelecionada() {
+            let turmaSelecionada = document.getElementById('idTurma').value;
+            if (parseInt(turmaSelecionada) == 0) {
+                alert("Selecione uma Turma!");
+                return false;
+            }
+        }
+
+        // No formulario de selecao de aluno da turma, nao é permitido executar o submit para a opcao "Selecione" 
+        function validarAlunoSelecionado() {
+            let alunoSelecionado = document.getElementById('idAlunoTurma').value;
+            if (parseInt(alunoSelecionado) == 0) {
+                alert("Selecione uma dos alunos da Turma!");
+                return false;
+            }
+        }
+
+        // remove do HTML o elemento form onde sera informado o aluno que faltou e sua data
+        // caso 
+        function limparFrmDefinirTurma() {
+
+            // procura o formulario FrmRegistrarAusencia e remove do HTML se existir
+            if (document.querySelector('form[name="frmRegistrarAusencia"]')) {
+                let vFrmRegistrarAusencia = document.querySelector('form[name="frmRegistrarAusencia"]');
+                vFrmRegistrarAusencia.remove();
+            }
+
+            // retorna o valor original da caixa de selecao de Turma
+            document.getElementById('idTurma').selectedIndex = 0;
+        }
+    </script>
+{% endblock %}
