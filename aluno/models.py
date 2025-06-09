@@ -14,7 +14,6 @@ class Aluno(models.Model):
 
     data_final = models.DateField(null=True,
                                   blank=True,
-                                  default=timezone.now(), 
                                   help_text='Informe a data final de matrícula do Aluno')
     
     def __str__(self):
