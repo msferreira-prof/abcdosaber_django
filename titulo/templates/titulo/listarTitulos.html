@@ -23,47 +23,51 @@
             </div>
         </div>
 
+        {% if titulos %}
+
         <!-- tabela responsiva -->
-        <div class="table-responsive">
+            <div class="table-responsive">
 
-            <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
-            <table class="table
-                        table-borderless
-                        text-center
-                        my-table-hover
-                        my-table-image
-                        my-table-td-first-child
-                        my-table-border-bottom
-                        my-table-th
-                        w-100">
+                <!-- classes para tabela (Bootstrap) , tabela sem borda, conteudo alinhado ao centro, ... , width: auto -->
+                <table class="table
+                            table-borderless
+                            text-center
+                            my-table-hover
+                            my-table-image
+                            my-table-td-first-child
+                            my-table-border-bottom
+                            my-table-th
+                            w-100">
 
-                <!-- cabecalho -->
-                <thead>
+                    <!-- cabecalho -->
+                    <thead>
+                        <!-- linhas -->
+                        <tr>
+                            <!-- colunas cabecalho -->
+                            <th>Código</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+
                     <!-- linhas -->
-                    <tr>
-                        <!-- colunas cabecalho -->
-                        <th>Código</th>
-                        <th>Descrição</th>
-                    </tr>
-                </thead>
+                    {% for titulo in titulos %}
+                        <tr>
+                            <td class="text-center"> {{ titulo.codigo }} </td>
+                            <td class="text-left"> {{ titulo.descricao }} </td>
+                        </tr>
+                    {% endfor %}
 
-                <!-- linhas -->
-                <tr>
-                    <td> 1 </td>
-                    <td> Professor Doutor </td>
-                </tr>
-                <tr>
-                    <td> 2 </td>
-                    <td> Professor Sabe-Tudo </td>
-                </tr>
-                <tr>
-                    <td> 3 </td>
-                    <td> Professor Estagiário </td>
-                </tr>
+                </table>
 
-            </table>
+            </div>
 
-        </div>
+        {% else %}
+
+            <div class='text-danger'>
+                <p>Não há títulos cadastrados</p>
+            </div>
+
+        {% endif %}
 
     </main>
 {% endblock %}    
