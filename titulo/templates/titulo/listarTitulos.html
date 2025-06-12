@@ -46,6 +46,7 @@
                             <!-- colunas cabecalho -->
                             <th>Código</th>
                             <th>Descrição</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
 
@@ -54,6 +55,15 @@
                         <tr>
                             <td class="text-center"> {{ titulo.codigo }} </td>
                             <td class="text-left"> {{ titulo.descricao }} </td>
+                            <td>
+                                <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
+                                <button type="button" class="btn" role="button" data-target="#modalExcluirTitulo"
+                                        data-toggle="modal"  
+                                        data-descricao="{{ titulo.descricao }}" 
+                                        data-url="{% url 'titulo:excluir_titulo' titulo.codigo %} ">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </td>
                         </tr>
                     {% endfor %}
 
@@ -70,4 +80,48 @@
         {% endif %}
 
     </main>
-{% endblock %}    
+
+    <!-- Modais -->
+    <div class="modal fade" id="modalExcluirTitulo" role="dialog" aria-labelledby="Confirmação" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Confirmação</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="mensagemExclusao"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnExcluir">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript_complementar %}
+    <!-- Prepara o modal com os dados da imagem do Titulo a ser excluido -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#modalExcluirTitulo').on('show.bs.modal', function(event) {
+                var descricao = $(event.relatedTarget).data('descricao');
+                var urlExcluir = $(event.relatedTarget).data('url');
+                $("#mensagemExclusao").text("Título [ " + descricao + "  ]?");
+
+                $.fn.excluirTitulo = function() {
+                    var url = $(event.relatedTarget).data('url');
+                    location.replace(url);
+                }
+            });
+        
+            $("#btnExcluir").on('click', function() {
+                $.fn.excluirTitulo();
+                return false;
+            });            
+        });
+    </script>
+{% endblock %}
+
