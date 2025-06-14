@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="mynavbar">
         <div class="navbar-nav">
             <a href="/" class="nav-link">Início</a>
-            <a href="{% url 'titulo:cadastrar' %}" class="nav-link">Cadastrar</a>
+            <a href="{% url 'titulo:cadastro' %}" class="nav-link">Cadastrar</a>
             <a href="{% url 'titulo:listar' %}" class="nav-link">Listar</a>
         </div>
     </div>
@@ -56,11 +56,11 @@
                             <td class="text-center"> {{ titulo.codigo }} </td>
                             <td class="text-left"> {{ titulo.descricao }} </td>
                             <td>
-                                <a href="#" class="btn btn-mini"><i class="far fa-edit"></i></a>
+                                <a href="{% url 'titulo:carregar_titulo' titulo.codigo %}" class="btn btn-mini"><i class="far fa-edit"></i></a>
                                 <button type="button" class="btn" role="button" data-target="#modalExcluirTitulo"
                                         data-toggle="modal"  
                                         data-descricao="{{ titulo.descricao }}" 
-                                        data-url="{% url 'titulo:excluir_titulo' titulo.codigo %} ">
+                                        data-url="{% url 'titulo:excluir_titulo' titulo.codigo %}">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </td>

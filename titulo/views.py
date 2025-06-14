@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from titulo.models import Titulo
-from titulo.forms import TituloForm
+from titulo.forms import TituloForm, TituloAtualizarForm
 from instrutor.models import Instrutor
 
 
@@ -46,5 +46,33 @@ def excluir(request, codigo):
 
     return redirect('titulo:listar')
 
+# carregar titulo para atualizar
+def carregar_titulo(request, codigo):
+    # obter titulo a atualizar basead no codigo informado
+    titulo = Titulo.objects.get(pk=codigo)
+    contexto = {
+        'titulo': titulo,
+    }
 
+    return render(request, 'titulo/atualizarTitulo.html', context=contexto)
 
+# atualizar a base de dados para o titulo selecionado
+def atualizar(request):
+    if request.method == 'POST':
+        form = TituloAtualizarForm(request.POST)
+        if form.is_valid():
+
+            dados_titulo = form.cleaned_data
+
+            codigo = dados_titulo['codigo']
+
+            titulo = Titulo.objects.get(pk=codigo)
+            titulo.descricao = dados_titulo['descricao']
+
+            titulo.save()
+        
+        # imprimir no console mensagens de erro na validação do formulário
+        #else:
+        #    print(form.errors)
+
+    return redirect('titulo:listar')
